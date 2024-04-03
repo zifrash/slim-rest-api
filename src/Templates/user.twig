@@ -1,0 +1,21 @@
+<a href="/">Главная</a>
+{% if entities|length == 1 %}
+    / <a href="/users">Пользователи</a>
+{% endif %}
+<br><br>
+<div class="users">
+    {% for entity in entities %}
+        <div class="user" user-id="{{ entity.id }}">
+            {% if entities|length > 1 %}
+                <div class="user-name">Имя: <a href="/users/{{ entity.id }}">{{ entity.name }}</a></div>
+            {% else %}
+                <div class="user-name">Имя: {{ entity.name }}</div>
+            {% endif %}
+            <div class="user-email">Почта: {{ entity.email }}</div>
+            <div class="user-phone">Телефон: {{ entity.phone }}</div>
+        </div>
+        {% if entities|length > 1 %}
+            <hr>
+        {% endif %}
+    {% endfor %}
+</div>

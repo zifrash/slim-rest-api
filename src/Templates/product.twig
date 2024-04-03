@@ -1,0 +1,21 @@
+<a href="/">Главная</a>
+{% if entities|length == 1 %}
+    / <a href="/products">Продукты</a>
+{% endif %}
+<br><br>
+<div class="products">
+    {% for entity in entities %}
+        <div class="product" product-id="{{ entity.id }}">
+            {% if entities|length > 1 %}
+                <div class="product-name">Название: <a href="/products/{{ entity.id }}">{{ entity.name }}</a></div>
+            {% else %}
+                <div class="product-name">Название: {{ entity.name }}</div>
+            {% endif %}
+            <div class="product-price">Цена: {{ entity.price }}</div>
+            <div class="product-quantity">Кол-во: {{ entity.quantity }}</div>
+        </div>
+        {% if entities|length > 1 %}
+            <hr>
+        {% endif %}
+    {% endfor %}
+</div>
